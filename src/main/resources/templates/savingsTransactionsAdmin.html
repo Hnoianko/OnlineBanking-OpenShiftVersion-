@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/headerAdmin :: common-header-adm"/>
+<body roleId="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<head th:replace="common/headerAdmin :: navbar-adm"/>
+<h1>Savings Account Transaction List for <big style="color: lightcoral" data-th-text="${username}">...</big></h1>
+
+
+<div class="table-responsive">
+    <table id="savingsTransactionsAdminTable" class="table table-bordered table-hover table-striped">
+
+        <thead>
+        <tr>
+            <th>Post Date</th>
+            <th>Description</th>
+            <th>Type</th>
+            <th>Status</th>
+            <th>Amount</th>
+            <th>Available Balance</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr data-th-each="savingsTransaction : ${savingsTransactionList}">
+            <td data-th-text="${savingsTransaction.date}">...</td>
+            <td data-th-text="${savingsTransaction.description}">...</td>
+            <td data-th-text="${savingsTransaction.type}">...</td>
+            <td data-th-text="${savingsTransaction.status}">...</td>
+            <td data-th-text="${savingsTransaction.amount}">...</td>
+            <td data-th-text="${savingsTransaction.availableBalance}">...</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div th:replace="common/headerAdmin :: body-bottom-scripts-adm"/>
+<script>
+    $(document).ready(function() {
+        $('#savingsTransactionsAdminTable').DataTable();
+    } );
+</script>
+</body>
+</html>

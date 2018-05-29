@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/headerAdmin :: common-header-adm"/>
+<body roleId="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<head th:replace="common/headerAdmin :: navbar-adm"/>
+<h1>Primary Account Transaction List for <big style="color: lightcoral" data-th-text="${username}">...</big></h1>
+
+
+<div class="table-responsive">
+    <table id="primaryTransactionsAdminTable" class="table table-bordered table-hover table-striped">
+
+        <thead>
+        <tr>
+            <th>Post Date</th>
+            <th>Description</th>
+            <th>Type</th>
+            <th>Status</th>
+            <th>Amount</th>
+            <th>Available Balance</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr data-th-each="primaryTransaction : ${primaryTransactionList}">
+            <td data-th-text="${primaryTransaction.date}">...</td>
+            <td data-th-text="${primaryTransaction.description}">...</td>
+            <td data-th-text="${primaryTransaction.type}">...</td>
+            <td data-th-text="${primaryTransaction.status}">...</td>
+            <td data-th-text="${primaryTransaction.amount}">...</td>
+            <td data-th-text="${primaryTransaction.availableBalance}">...</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div th:replace="common/headerAdmin :: body-bottom-scripts-adm"/>
+<script>
+    $(document).ready(function() {
+        $('#primaryTransactionsAdminTable').DataTable();
+    } );
+</script>
+</body>
+</html>
